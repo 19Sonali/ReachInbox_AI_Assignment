@@ -6,8 +6,11 @@ function Toggle() {
 
     useEffect(() => {
         const root = window.document.documentElement;
-        root.classList.remove(darkMode ? 'light' : 'dark');
-        root.classList.add(darkMode ? 'dark' : 'light');
+        if (darkMode) {
+            root.classList.add('dark');
+        } else {
+            root.classList.remove('dark');
+        }
     }, [darkMode]);
 
     return (
@@ -21,21 +24,19 @@ function Toggle() {
                 />
                
                 <div className={`relative w-14 h-8 rounded-full transition-colors 
-                                peer-focus:outline-none peer-focus:ring-4
-                                peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 
-                                ${darkMode ? 'bg-black' : 'bg-white'} 
-                                peer-checked:${darkMode ? 'bg-white' : 'bg-black'}
+                                ${darkMode ? 'bg-gray-600' : 'bg-gray-300'}
+                                peer-checked:${darkMode ? 'bg-gray-600' : 'bg-gray-300'}
                                 after:content-[''] after:absolute after:top-[2px] 
-                                after:left-[2px] after:bg-${darkMode ? 'white' : 'black'}
-                                after:border-${darkMode ? 'black' : 'white'}
+                                after:left-[2px] after:bg-${darkMode ? 'black' : 'white'}
+                                after:border-${darkMode ? 'black' : 'gray-300'}
                                 after:border after:rounded-full after:h-6 
                                 after:w-6 after:transition-all
                                 peer-checked:after:translate-x-full`}>
 
-                    {/* Move FaSun to the right and FaMoon to the left */}
-                    <FaSun className={`absolute right-2 top-2 text-yellow-500 ${darkMode ? 'invisible' : 'visible'} transition-opacity`} />
                     
-                    <FaMoon className={`absolute left-2 top-2 text-white ${darkMode ? 'visible' : 'invisible'} transition-opacity`} />
+                    
+                    <FaSun className={`absolute left-2 top-2 text-yellow-500 ${darkMode ? 'visible' : 'invisible'} transition-opacity`} />
+                    <FaMoon className={`absolute right-2 top-2 text-white ${darkMode ? 'invisible' : 'visible'} transition-opacity`} />
                     
                 </div>
             </label>
