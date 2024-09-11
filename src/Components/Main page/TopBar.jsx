@@ -12,7 +12,7 @@ const TopBar = () => {
           <Toggle />
         </div>
         <div className="ml-3 flex items-center">
-          Tim's Workspace 
+          Sonali's Workspace 
           <MdOutlineKeyboardArrowDown className="text-3xl ml-3" />
         </div>
       </div>
